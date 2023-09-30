@@ -6,6 +6,8 @@ import algosdk from 'algosdk'
 import { SnackbarProvider } from 'notistack'
 import { useState } from 'react'
 import AppCalls from './components/AppCalls'
+import Auction from './components/Auction'
+import Calculator from './components/Calculator'
 import ConnectWallet from './components/ConnectWallet'
 import Transact from './components/Transact'
 import { getAlgodConfigFromViteEnvironment } from './utils/network/getAlgoClientConfigs'
@@ -28,6 +30,8 @@ export default function App() {
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
   const [openDemoModal, setOpenDemoModal] = useState<boolean>(false)
   const [appCallsDemoModal, setAppCallsDemoModal] = useState<boolean>(false)
+  const [calculatorDemoModal, setCalculatorDemoModal] = useState<boolean>(false)
+  const [auctionDemoModal, setAuctionDemoModal] = useState<boolean>(false)
   const { activeAddress } = useWallet()
 
   const toggleWalletModal = () => {
@@ -40,6 +44,14 @@ export default function App() {
 
   const toggleAppCallsModal = () => {
     setAppCallsDemoModal(!appCallsDemoModal)
+  }
+
+  const toggleCalculatorsModal = () => {
+    setCalculatorDemoModal(!calculatorDemoModal)
+  }
+
+  const toggleAuctionModal = () => {
+    setAuctionDemoModal(!auctionDemoModal)
   }
 
   const algodConfig = getAlgodConfigFromViteEnvironment()
@@ -94,11 +106,24 @@ export default function App() {
                     Contract Interactions Demo
                   </button>
                 )}
+
+                {activeAddress && (
+                  <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleCalculatorsModal}>
+                    Calculator Demo
+                  </button>
+                )}
+                {activeAddress && (
+                  <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAuctionModal}>
+                    Start Auction Demo
+                  </button>
+                )}
               </div>
 
               <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
               <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />
               <AppCalls openModal={appCallsDemoModal} setModalState={setAppCallsDemoModal} />
+              <Calculator openModal={calculatorDemoModal} setModalState={setCalculatorDemoModal} />
+              <Auction openModal={auctionDemoModal} setModalState={setAuctionDemoModal} />
             </div>
           </div>
         </div>
