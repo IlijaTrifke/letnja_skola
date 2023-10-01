@@ -1,0 +1,132 @@
+{
+    "hints": {
+        "add(uint64)uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "subtract(uint64)uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "multiple(uint64)uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "divide(uint64)uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "hello(string)string": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDgKaW50Y2Jsb2NrIDAgMQpieXRlY2Jsb2NrIDB4NzQ2Zjc0NjE2YyAweDE1MWY3Yzc1IDB4CnR4biBOdW1BcHBBcmdzCmludGNfMCAvLyAwCj09CmJueiBtYWluX2wxMgp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGZmOWE3M2Q2IC8vICJhZGQodWludDY0KXVpbnQ2NCIKPT0KYm56IG1haW5fbDExCnR4bmEgQXBwbGljYXRpb25BcmdzIDAKcHVzaGJ5dGVzIDB4M2M0MTM0MDAgLy8gInN1YnRyYWN0KHVpbnQ2NCl1aW50NjQiCj09CmJueiBtYWluX2wxMAp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGJkNzU5M2JiIC8vICJtdWx0aXBsZSh1aW50NjQpdWludDY0Igo9PQpibnogbWFpbl9sOQp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweDhkZWM0NDM2IC8vICJkaXZpZGUodWludDY0KXVpbnQ2NCIKPT0KYm56IG1haW5fbDgKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMApwdXNoYnl0ZXMgMHgwMmJlY2UxMSAvLyAiaGVsbG8oc3RyaW5nKXN0cmluZyIKPT0KYm56IG1haW5fbDcKZXJyCm1haW5fbDc6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KJiYKYXNzZXJ0CmNhbGxzdWIgaGVsbG9jYXN0ZXJfOQppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sODoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBkaXZpZGVjYXN0ZXJfOAppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sOToKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBtdWx0aXBsZWNhc3Rlcl83CmludGNfMSAvLyAxCnJldHVybgptYWluX2wxMDoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBzdWJ0cmFjdGNhc3Rlcl82CmludGNfMSAvLyAxCnJldHVybgptYWluX2wxMToKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBhZGRjYXN0ZXJfNQppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sMTI6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KYm56IG1haW5fbDE0CmVycgptYWluX2wxNDoKdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKPT0KYXNzZXJ0CmludGNfMSAvLyAxCnJldHVybgoKLy8gYWRkCmFkZF8wOgpwcm90byAxIDEKaW50Y18wIC8vIDAKYnl0ZWNfMCAvLyAidG90YWwiCmJ5dGVjXzAgLy8gInRvdGFsIgphcHBfZ2xvYmFsX2dldApmcmFtZV9kaWcgLTEKKwphcHBfZ2xvYmFsX3B1dApieXRlY18wIC8vICJ0b3RhbCIKYXBwX2dsb2JhbF9nZXQKZnJhbWVfYnVyeSAwCnJldHN1YgoKLy8gc3VidHJhY3QKc3VidHJhY3RfMToKcHJvdG8gMSAxCmludGNfMCAvLyAwCmJ5dGVjXzAgLy8gInRvdGFsIgphcHBfZ2xvYmFsX2dldApmcmFtZV9kaWcgLTEKPApibnogc3VidHJhY3RfMV9sMgpieXRlY18wIC8vICJ0b3RhbCIKYnl0ZWNfMCAvLyAidG90YWwiCmFwcF9nbG9iYWxfZ2V0CmZyYW1lX2RpZyAtMQotCmFwcF9nbG9iYWxfcHV0CmIgc3VidHJhY3RfMV9sMwpzdWJ0cmFjdF8xX2wyOgpieXRlY18wIC8vICJ0b3RhbCIKaW50Y18wIC8vIDAKYXBwX2dsb2JhbF9wdXQKc3VidHJhY3RfMV9sMzoKYnl0ZWNfMCAvLyAidG90YWwiCmFwcF9nbG9iYWxfZ2V0CmZyYW1lX2J1cnkgMApyZXRzdWIKCi8vIG11bHRpcGxlCm11bHRpcGxlXzI6CnByb3RvIDEgMQppbnRjXzAgLy8gMApieXRlY18wIC8vICJ0b3RhbCIKYnl0ZWNfMCAvLyAidG90YWwiCmFwcF9nbG9iYWxfZ2V0CmZyYW1lX2RpZyAtMQoqCmFwcF9nbG9iYWxfcHV0CmJ5dGVjXzAgLy8gInRvdGFsIgphcHBfZ2xvYmFsX2dldApmcmFtZV9idXJ5IDAKcmV0c3ViCgovLyBkaXZpZGUKZGl2aWRlXzM6CnByb3RvIDEgMQppbnRjXzAgLy8gMApmcmFtZV9kaWcgLTEKaW50Y18wIC8vIDAKPT0KYm56IGRpdmlkZV8zX2wyCmJ5dGVjXzAgLy8gInRvdGFsIgpieXRlY18wIC8vICJ0b3RhbCIKYXBwX2dsb2JhbF9nZXQKZnJhbWVfZGlnIC0xCi8KYXBwX2dsb2JhbF9wdXQKYiBkaXZpZGVfM19sMwpkaXZpZGVfM19sMjoKYnl0ZWNfMCAvLyAidG90YWwiCmludGNfMCAvLyAwCmFwcF9nbG9iYWxfcHV0CmRpdmlkZV8zX2wzOgpieXRlY18wIC8vICJ0b3RhbCIKYXBwX2dsb2JhbF9nZXQKZnJhbWVfYnVyeSAwCnJldHN1YgoKLy8gaGVsbG8KaGVsbG9fNDoKcHJvdG8gMSAxCmJ5dGVjXzIgLy8gIiIKcHVzaGJ5dGVzIDB4NDg2NTZjNmM2ZjJjMjAgLy8gIkhlbGxvLCAiCmZyYW1lX2RpZyAtMQpleHRyYWN0IDIgMApjb25jYXQKZnJhbWVfYnVyeSAwCmZyYW1lX2RpZyAwCmxlbgppdG9iCmV4dHJhY3QgNiAwCmZyYW1lX2RpZyAwCmNvbmNhdApmcmFtZV9idXJ5IDAKcmV0c3ViCgovLyBhZGRfY2FzdGVyCmFkZGNhc3Rlcl81Ogpwcm90byAwIDAKaW50Y18wIC8vIDAKZHVwCnR4bmEgQXBwbGljYXRpb25BcmdzIDEKYnRvaQpmcmFtZV9idXJ5IDEKZnJhbWVfZGlnIDEKY2FsbHN1YiBhZGRfMApmcmFtZV9idXJ5IDAKYnl0ZWNfMSAvLyAweDE1MWY3Yzc1CmZyYW1lX2RpZyAwCml0b2IKY29uY2F0CmxvZwpyZXRzdWIKCi8vIHN1YnRyYWN0X2Nhc3RlcgpzdWJ0cmFjdGNhc3Rlcl82Ogpwcm90byAwIDAKaW50Y18wIC8vIDAKZHVwCnR4bmEgQXBwbGljYXRpb25BcmdzIDEKYnRvaQpmcmFtZV9idXJ5IDEKZnJhbWVfZGlnIDEKY2FsbHN1YiBzdWJ0cmFjdF8xCmZyYW1lX2J1cnkgMApieXRlY18xIC8vIDB4MTUxZjdjNzUKZnJhbWVfZGlnIDAKaXRvYgpjb25jYXQKbG9nCnJldHN1YgoKLy8gbXVsdGlwbGVfY2FzdGVyCm11bHRpcGxlY2FzdGVyXzc6CnByb3RvIDAgMAppbnRjXzAgLy8gMApkdXAKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQpidG9pCmZyYW1lX2J1cnkgMQpmcmFtZV9kaWcgMQpjYWxsc3ViIG11bHRpcGxlXzIKZnJhbWVfYnVyeSAwCmJ5dGVjXzEgLy8gMHgxNTFmN2M3NQpmcmFtZV9kaWcgMAppdG9iCmNvbmNhdApsb2cKcmV0c3ViCgovLyBkaXZpZGVfY2FzdGVyCmRpdmlkZWNhc3Rlcl84Ogpwcm90byAwIDAKaW50Y18wIC8vIDAKZHVwCnR4bmEgQXBwbGljYXRpb25BcmdzIDEKYnRvaQpmcmFtZV9idXJ5IDEKZnJhbWVfZGlnIDEKY2FsbHN1YiBkaXZpZGVfMwpmcmFtZV9idXJ5IDAKYnl0ZWNfMSAvLyAweDE1MWY3Yzc1CmZyYW1lX2RpZyAwCml0b2IKY29uY2F0CmxvZwpyZXRzdWIKCi8vIGhlbGxvX2Nhc3RlcgpoZWxsb2Nhc3Rlcl85Ogpwcm90byAwIDAKYnl0ZWNfMiAvLyAiIgpkdXAKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQpmcmFtZV9idXJ5IDEKZnJhbWVfZGlnIDEKY2FsbHN1YiBoZWxsb180CmZyYW1lX2J1cnkgMApieXRlY18xIC8vIDB4MTUxZjdjNzUKZnJhbWVfZGlnIDAKY29uY2F0CmxvZwpyZXRzdWI=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDgKcHVzaGludCAwIC8vIDAKcmV0dXJu"
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 0,
+            "num_uints": 1
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {
+                "total": {
+                    "type": "uint64",
+                    "key": "total",
+                    "descr": "A calculator total value"
+                }
+            },
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "CalculatorApp",
+        "methods": [
+            {
+                "name": "add",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "num"
+                    }
+                ],
+                "returns": {
+                    "type": "uint64"
+                },
+                "desc": "Add a number to the calculator"
+            },
+            {
+                "name": "subtract",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "num"
+                    }
+                ],
+                "returns": {
+                    "type": "uint64"
+                },
+                "desc": "subtract number from the total"
+            },
+            {
+                "name": "multiple",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "num"
+                    }
+                ],
+                "returns": {
+                    "type": "uint64"
+                },
+                "desc": "multiple number by total"
+            },
+            {
+                "name": "divide",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "num"
+                    }
+                ],
+                "returns": {
+                    "type": "uint64"
+                },
+                "desc": "divide total by number"
+            },
+            {
+                "name": "hello",
+                "args": [
+                    {
+                        "type": "string",
+                        "name": "name"
+                    }
+                ],
+                "returns": {
+                    "type": "string"
+                }
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {
+        "no_op": "CREATE"
+    }
+}

@@ -15,7 +15,10 @@ interface AppCallsInterface {
 const Auction = ({ openModal, setModalState }: AppCallsInterface) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [highestBid, setHighestBid] = useState<number>(0)
-  const [adress, setAdress] = useState<string>('')
+  const [highestBidder, setHighestBidder] = useState<string>('')
+  const [BidText, setBidText] = useState<string>('')
+  const [BidderText, setBidderText] = useState<string>('')
+  const [length, setLength] = useState<number>(0)
 
   const algodConfig = getAlgodConfigFromViteEnvironment()
   const algodClient = algokit.getAlgoClient({
@@ -63,54 +66,108 @@ const Auction = ({ openModal, setModalState }: AppCallsInterface) => {
 
     let response
     if (operation == 'pay') {
-      response = await appClient.pay({ num: highestBid, adress: adress }).catch((e: Error) => {
+      response = await appClient
+        .pay({ num: highestBid, name: highestBidder })
+        .then(() => {
+          setBidText(String(highestBid))
+          setBidderText(highestBidder)
+          setLoading(false)
+        })
+        .catch((e: Error) => {
+          enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
+          setLoading(false)
+          return
+        })
+    }
+    if (operation == 'start_auction') {
+      response = await appClient.startAuction({ starting_price: highestBid, length: length }).catch((e: Error) => {
         enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
         setLoading(false)
         return
       })
     }
-    // else {
-    //   response = await appClient.subtract({ num: contractInput }).catch((e: Error) => {
-    //     enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
-    //     setLoading(false)
-    //     return
-    //   })
-    // }
+    if (operation == 'force_stop_auction') {
+      response = await appClient
+        .forceStopAuction({})
+        .then(() => {
+          setBidText('')
+          setBidderText('')
+        })
+        .catch((e: Error) => {
+          enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
+          setLoading(false)
+          return
+        })
+    }
     enqueueSnackbar(`Response from the contract: ${response?.return}`, { variant: 'success' })
     setLoading(false)
   }
 
   return (
-    <dialog id="appcalls_modal" className={`modal ${openModal ? 'modal-open w-10' : ''} bg-slate-200`}>
+    <dialog id="appcalls_modal" className={`modal ${openModal ? 'modal-open' : ''} bg-slate-200`}>
       <form method="dialog" className="modal-box">
         <h3 className="font-bold text-lg">Say hello to your Algorand smart contract</h3>
         <br />
-        <h3 className="font-bold text-lg">Total: {}</h3>
+        <h3 className="font-bold text-lg">Highest bid: {BidText}</h3>
+        <br />
+        <h3 className="font-bold text-lg">Highest bidder: {BidderText}</h3>
         <br />
         <input
           type="number"
-          placeholder="Provide input"
+          placeholder="Your bid"
           className="input input-bordered w-full"
           // value={contractInput}
           onChange={(e) => {
             setHighestBid(Number(e.target.value))
           }}
         />
+        <br />
+        <br />
         <input
           type="text"
-          placeholder="Provide input"
+          placeholder="Your name"
           className="input input-bordered w-full"
           // value={contractInput}
           onChange={(e) => {
-            setAdress(e.target.value)
+            setHighestBidder(e.target.value)
           }}
         />
-        <div className="modal-action ">
+        <br />
+        <br />
+        <br />
+        <br />
+        <input
+          type="text"
+          placeholder="Starting price"
+          className="input input-bordered w-full"
+          // value={contractInput}
+          onChange={(e) => {
+            setHighestBid(Number(e.target.value))
+          }}
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          placeholder="Length"
+          className="input input-bordered w-full"
+          // value={contractInput}
+          onChange={(e) => {
+            setLength(Number(e.target.value))
+          }}
+        />
+        <div className="modal-action">
           <button className="btn" onClick={() => setModalState(!openModal)}>
             Close
           </button>
-          <button className={`btn`} onClick={() => sendAppCall('pay')}>
+          <button className="btn" onClick={() => sendAppCall('pay')}>
             {loading ? <span className="loading loading-spinner" /> : 'pay'}
+          </button>
+          <button className={`btn`} onClick={() => sendAppCall('start_auction')}>
+            {loading ? <span className="loading loading-spinner" /> : 'start auction'}
+          </button>
+          <button className={`btn`} onClick={() => sendAppCall('force_stop_auction')}>
+            {loading ? <span className="loading loading-spinner" /> : 'force stop auction'}
           </button>
         </div>
       </form>

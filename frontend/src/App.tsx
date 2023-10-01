@@ -114,7 +114,7 @@ export default function App() {
                 )}
                 {activeAddress && (
                   <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAuctionModal}>
-                    Start Auction Demo
+                    Auction Demo
                   </button>
                 )}
               </div>

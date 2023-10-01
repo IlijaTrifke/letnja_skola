@@ -1,0 +1,226 @@
+#pragma version 8
+intcblock 0 1
+bytecblock 0x61756374696f6e5f656e64 0x 0x686967686573745f626964 0x686967686573745f626964646572 0x151f7c75
+txn NumAppArgs
+intc_0 // 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0xc517cfc4 // "pay(uint64,string)string"
+==
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x90e4b9d9 // "start_auction(uint64,uint64)void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+pushbytes 0xd80f5eaa // "force_stop_auction()string"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub forcestopauctioncaster_5
+intc_1 // 1
+return
+main_l6:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub startauctioncaster_4
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub paycaster_3
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l10
+err
+main_l10:
+txn ApplicationID
+intc_0 // 0
+==
+assert
+intc_1 // 1
+return
+
+// pay
+pay_0:
+proto 2 1
+bytec_1 // ""
+bytec_0 // "auction_end"
+app_global_get
+global LatestTimestamp
+>
+assert
+bytec_0 // "auction_end"
+app_global_get
+intc_0 // 0
+!=
+assert
+frame_dig -2
+bytec_2 // "highest_bid"
+app_global_get
+>
+assert
+bytec_3 // "highest_bidder"
+frame_dig -1
+extract 2 0
+app_global_put
+bytec_2 // "highest_bid"
+frame_dig -2
+app_global_put
+pushbytes 0x48696768657374206269646465722069733a20 // "Highest bidder is: "
+bytec_3 // "highest_bidder"
+app_global_get
+concat
+pushbytes 0x2077697468206269643a20 // " with bid: "
+concat
+bytec_2 // "highest_bid"
+app_global_get
+itob
+concat
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+retsub
+
+// start_auction
+startauction_1:
+proto 2 0
+bytec_0 // "auction_end"
+app_global_get
+global LatestTimestamp
+<
+bz startauction_1_l2
+bytec_0 // "auction_end"
+intc_0 // 0
+app_global_put
+startauction_1_l2:
+bytec_0 // "auction_end"
+app_global_get
+intc_0 // 0
+==
+assert
+bytec_2 // "highest_bid"
+frame_dig -2
+app_global_put
+bytec_0 // "auction_end"
+frame_dig -1
+global LatestTimestamp
++
+app_global_put
+retsub
+
+// force_stop_auction
+forcestopauction_2:
+proto 0 1
+bytec_1 // ""
+bytec_0 // "auction_end"
+app_global_get
+intc_0 // 0
+!=
+bnz forcestopauction_2_l2
+pushbytes 0x41756374696f6e206e6576657220676f74207374617274656421 // "Auction never got started!"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b forcestopauction_2_l3
+forcestopauction_2_l2:
+pushbytes 0x41756374696f6e20686173206265656e2073746f7070656421 // "Auction has been stopped!"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+forcestopauction_2_l3:
+bytec_0 // "auction_end"
+intc_0 // 0
+app_global_put
+retsub
+
+// pay_caster
+paycaster_3:
+proto 0 0
+bytec_1 // ""
+intc_0 // 0
+bytec_1 // ""
+txna ApplicationArgs 1
+btoi
+frame_bury 1
+txna ApplicationArgs 2
+frame_bury 2
+frame_dig 1
+frame_dig 2
+callsub pay_0
+frame_bury 0
+bytec 4 // 0x151f7c75
+frame_dig 0
+concat
+log
+retsub
+
+// start_auction_caster
+startauctioncaster_4:
+proto 0 0
+intc_0 // 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub startauction_1
+retsub
+
+// force_stop_auction_caster
+forcestopauctioncaster_5:
+proto 0 0
+bytec_1 // ""
+callsub forcestopauction_2
+frame_bury 0
+bytec 4 // 0x151f7c75
+frame_dig 0
+concat
+log
+retsub

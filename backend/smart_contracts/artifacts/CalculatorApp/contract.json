@@ -1,0 +1,70 @@
+{
+    "name": "CalculatorApp",
+    "methods": [
+        {
+            "name": "add",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "num"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "desc": "Add a number to the calculator"
+        },
+        {
+            "name": "subtract",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "num"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "desc": "subtract number from the total"
+        },
+        {
+            "name": "multiple",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "num"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "desc": "multiple number by total"
+        },
+        {
+            "name": "divide",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "num"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "desc": "divide total by number"
+        },
+        {
+            "name": "hello",
+            "args": [
+                {
+                    "type": "string",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            }
+        }
+    ],
+    "networks": {}
+}

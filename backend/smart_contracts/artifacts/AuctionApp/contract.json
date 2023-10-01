@@ -1,0 +1,48 @@
+{
+    "name": "AuctionApp",
+    "methods": [
+        {
+            "name": "pay",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "num"
+                },
+                {
+                    "type": "string",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            },
+            "desc": "place your bid"
+        },
+        {
+            "name": "start_auction",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "starting_price"
+                },
+                {
+                    "type": "uint64",
+                    "name": "length"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            },
+            "desc": "start a new auction"
+        },
+        {
+            "name": "force_stop_auction",
+            "args": [],
+            "returns": {
+                "type": "string"
+            },
+            "desc": "force stop the current auction"
+        }
+    ],
+    "networks": {}
+}
